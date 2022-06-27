@@ -16,4 +16,8 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
   ],
+  devServer: {
+    port: 3000, // 端口号
+    open: true,
+  }
 };
