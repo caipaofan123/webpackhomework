@@ -1,5 +1,5 @@
 <template>
-  <div id="app"></div>
+  <div id="app">hhhhhhhhhhhhhhh</div>
 </template>
 
 <script>
@@ -7,7 +7,9 @@ export default {
   name: 'HomeworkdemoApp',
 
   data() {
-    return {};
+    return {
+     
+    };
   },
 
   mounted() {},
@@ -16,4 +18,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

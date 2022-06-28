@@ -14,9 +14,20 @@ img.src = imgUrl;
 document.body.appendChild(img);
 
 // import Vue from "vue"
+import {createApp} from 'vue'
 import App from "./App.vue"
 // import mylib from "mylib"
 // Vue.use(mylib)
+// Vue.config.productionTip = false
+
+// Vue.filter('toUP',(val)=>{return val.toUpperCase()})
+// Vue.filter('reverse',(val)=>{return val.split('').reverse().join('')})
+
+// new Vue({
+//   render: h => h(App),
+// }).$mount('#app')
+
+createApp(App).mount('#app')
 
 
 const fn = () => {
