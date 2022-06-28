@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
+const {VueLoaderPlugin} = require('vue-loader');
 module.exports = {
   mode: 'development',
   entry: './src/index.js', // 入口
@@ -10,6 +10,7 @@ module.exports = {
     filename: 'bundle.js', // 出口文件名
   },
   plugins: [
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html', // 告诉webpack使用插件时, 以我们自己的html文件作为模板去生成dist/html文件
       filename: 'index.html', // 生成文件的名称
@@ -64,6 +65,26 @@ module.exports = {
         // type: 'asset/resource' // 发送一个单独的文件并导出 URL
         // type: 'asset/inline' // 导出一个资源的 data URI
       },
+      {
+        // webpack5默认内部不认识这些文件, 所以当做静态资源直接输出即可
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'font-[name].[hash:6][ext]',
+        },
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'], // 预设:转码规则(用bable开发环境本来预设的)
+          },
+        },
+      },
+
+      { test: /\.vue$/, loader: 'vue-loader' },
     ],
   },
 };
